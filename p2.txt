@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    <header>TIME-TABLE</header>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            padding: 10px;
+        }
+        header {
+            display: flex;
+            justify-content: center;
+            font-weight:bolder
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th rowspan="2">Time<br>Day</th>
+            <th>8:45-9:40</th>
+            <th>9:40-10:35</th>
+            <th>10:35-10:50</th>
+            <th>10:50-11:45</th>
+            <th>11:45-12:40</th>
+            <th>12:40-1:40</th>
+            <th>1:40-2:35</th>
+            <th>2:35-3:30</th>
+            <th>3:30-4:25</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td>Monday</td>
+            <td>CN</td>
+            <td>TOC</td>
+            <td rowspan="5" class="vertical-text">Tea Break</td>
+            <td>TOC</td>
+            <td>AI</td>
+            <td rowspan="5" class="vertical-text">Lunch Break</td>
+            <td>RM</td>
+            <td>SE</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+            <td colspan="2">SOFTSKILL</td>
+            <td>RM</td>
+            <td>CN</td>
+            <td>SE</td>
+            <td>AI</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td colspan="2">C1/C2 CN</td>
+            <td>RM</td>
+            <td>TOC</td>
+            <td colspan="2">FORUM</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Thursday</td>
+            <td>RM</td>
+            <td>TOC</td>
+            <td>SE</td>
+            <td>EVS</td>
+            <td colspan="2">C1/C2 WEB</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Friday</td>
+            <td>AI</td>
+            <td>SE</td>
+            <td>TOC</td>
+            <td>CN</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

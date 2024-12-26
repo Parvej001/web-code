@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Script</title>
+    <style>
+        #box { width: 100px; height: 100px; background-color: blue; margin-top: 20px; }
+        .highlight { background-color: yellow; }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <p id="para">This is a paragraph.</p>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+    <button id="append">Append Content</button>
+    <button id="animate">Animate Box</button>
+    <div id="box"></div>
+    <script>
+        $(document).ready(function () {
+            // Append content to paragraph and list
+            $('#append').click(() => {
+                $('#para').append(' Appended text.');
+                $('#list').append('<li>New Item</li>');
+            });
+
+            // Animate the box and change its color
+            $('#animate').click(() => {
+                $('#box').animate({ width: '200px', height: '200px' }, 500, function () {
+                    $(this).addClass('highlight');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

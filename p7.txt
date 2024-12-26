@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Utility Tool</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    textarea, input, button { width: 100%; margin: 10px 0; padding: 10px; }
+    pre { background: #f4f4f4; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>JSON Utility Tool</h1>
+  <textarea id="jsonInput" placeholder="Enter JSON here..."></textarea>
+  <button onclick="processJSON()">Process JSON</button>
+  <pre id="output"></pre>
+
+  <script>
+    function processJSON() {
+      const jsonInput = document.getElementById('jsonInput').value;
+      let output = "";
+
+      // Convert JSON to Object
+      const jsonObj = JSON.parse(jsonInput);
+      output += Converted Object: ${JSON.stringify(jsonObj)}\n;
+
+      // Convert JSON result into a date
+      if (jsonObj.date) {
+        output += Converted Date: ${new Date(jsonObj.date)}\n;
+      }
+
+      // Convert JSON to CSV
+      const csv = Object.keys(jsonObj).join(',') + '\n' + Object.values(jsonObj).join(',');
+      output += JSON to CSV:\n${csv}\n;
+
+      // Convert CSV to JSON
+      const csvToJson = csv.split('\n').reduce((acc, row, idx) => {
+        const cols = row.split(',');
+        if (idx === 0) acc.headers = cols;
+        else acc.data.push(Object.fromEntries(cols.map((val, i) => [acc.headers[i], val])));
+        return acc;
+      }, { headers: [], data: [] }).data;
+      output += CSV to JSON:\n${JSON.stringify(csvToJson, null, 2)}\n;
+
+      document.getElementById('output').innerText = output;
+    }
+  </script>
+
+  <script type="module">
+    import { createHash } from 'https://cdn.jsdelivr.net/npm/crypto-browserify@3.12.0/index.js';
+    const hashString = (str) => createHash('sha256').update(str).digest('hex');
+    document.querySelector('button').addEventListener('click', () => {
+      const hash = hashString(document.getElementById('jsonInput').value);
+      document.getElementById('output').innerText += Hash: ${hash}\n;
+    });
+  </script>
+</body>
+</html>
